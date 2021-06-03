@@ -1,7 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react'
 import styled from 'styled-components'
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar'
 import { VALUES } from './constants/values'
+import Search from './pages/search/Search'
+import Pokemon from './pages/pokemon/Pokemon'
+import Favorites from './pages/favorites/Favorites'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom"
 
 const Container = styled.div`
     padding: 0px;
@@ -11,55 +19,29 @@ const Container = styled.div`
     height: 100vh;
 `
 
-const SearchBar = styled.input`
-    margin: 5px;
-    padding: 5px;
-    font-size: 16px;
-    width: calc(100% - 25px);
-`
-
 const Body = styled.div`
     height: calc(100vh - ${VALUES.navbarHeight});
 `
 
-const List = styled.ul`
-    overflow: auto;
-    max-height: calc(100vh - 70px - ${VALUES.navbarHeight});
-`
-
 function App() {
-    const [pokemon, setPokemon] = useState([])
-    const [searchTerm, setSearchTerm] = useState("")
-    const [searchResults, setSearchResults] = useState([])
-
-    useEffect(() => {
-        fetch('https://pokemonrater-backend.herokuapp.com/nationaldex')
-            .then(res => res.json())
-            .then(res => setPokemon(res))
-    }, [])
-
-    useEffect(() => {
-        const results = pokemon.filter(pokemon =>
-            pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        setSearchResults(results)
-    }, [searchTerm])
-
-    const handleChange = e => {
-        setSearchTerm(e.target.value)
-    }
-
     return (
         <Container>
-            <Body>
-                <SearchBar type="text" placeholder="Search..." value={searchTerm} onChange={handleChange} />
-                <List>
-                    {searchResults.map(pokemon => {
-                        return <li>{pokemon.name}</li>
-                    })}
-                </List>
-            </Body>
-            <Navbar />
+            <Router>
+                <Body>
+                    <Switch>
+                        <Route path="/pokemon">
+                            <Pokemon />
+                        </Route>
+                        <Route path="/favorites">
+                            <Favorites />
+                        </Route>
+                        <Route path="/">
+                            <Search />
+                        </Route>
+                    </Switch>
+                </Body>
+                <Navbar />
+            </Router>
         </Container>
     );
 }
