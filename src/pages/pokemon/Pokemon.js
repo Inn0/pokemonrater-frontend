@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom"
 import styled from 'styled-components'
 import { FaChevronLeft, FaRegHeart } from 'react-icons/fa'
 import Stats from './Stats'
+import Type from './Type'
 
 const Container = styled.div`
     display: flex;
@@ -74,13 +75,6 @@ const TypeContainer = styled.div`
     line-height: 40px;
 `
 
-const Type = styled.p`
-    font-size: 18px;
-    margin: 0;
-    margin-left: 10px;
-    margin-right: 10px;
-`
-
 function Pokemon(props) {
     const { pokemonName } = useParams()
     const [pokemon, setPokemon] = useState({})
@@ -105,7 +99,7 @@ function Pokemon(props) {
                     </BackgroundColor>
                     <TypeContainer>
                         {pokemon.types.map(type => {
-                            return <Type key={type.id}>{type.name}</Type>
+                            return <Type key={type.id} type={type.name}/>
                         })}
                     </TypeContainer>
                     <Header>
