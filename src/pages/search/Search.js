@@ -1,17 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { VALUES } from '../../constants/values'
+import ResultItem from './ResultItem'
 
-const List = styled.ul`
+const List = styled.div`
     overflow: auto;
-    max-height: calc(100vh - 70px - ${VALUES.navbarHeight});
+    max-height: calc(100vh - 55px - ${VALUES.navbarHeight});
+    width: 100vw;
 `
 
 const SearchBar = styled.input`
-    margin: 5px;
-    padding: 5px;
-    font-size: 16px;
-    width: calc(100% - 25px);
+    margin: 10px;
+    padding: 10px;
+    font-size: 18px;
+    width: 100%;
+    margin-bottom: 0px;
+`
+
+const SearchContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+const SearchBarContainer = styled.div`
+    display: flex;
+    flex-direction: row;
 `
 
 function Search() {
@@ -30,21 +43,24 @@ function Search() {
             pokemon.name.toLowerCase().includes(searchTerm.toLowerCase())
         )
         setSearchResults(results)
-    }, [searchTerm])
+    }, [searchTerm, pokemon])
 
     const handleChange = e => {
         setSearchTerm(e.target.value)
     }
 
     return (
-        <div>
-            <SearchBar type="text" placeholder="Search..." value={searchTerm} onChange={handleChange} />
+        <SearchContainer>
+            <SearchBarContainer>
+                <SearchBar type="text" placeholder="Search..." value={searchTerm} onChange={handleChange} />
+            </SearchBarContainer>
+
             <List>
                 {searchResults.map(pokemon => {
-                    return <li>{pokemon.name}</li>
+                    return <ResultItem pokemon={pokemon}/>
                 })}
             </List>
-        </div>
+        </SearchContainer>
     );
 }
 
