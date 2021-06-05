@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     width: calc(100vw - 40px);
@@ -14,11 +15,20 @@ const Title = styled.p`
     margin: 0;
 `
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: black;
+    margin: auto;
+`
+
 function ResultItem(props) {
     return (
-        <Container>
-            <Title>#{props.pokemon.id}, {props.pokemon.name}</Title>
-        </Container>
+        <StyledLink to={"/pokemon/" + props.pokemon.name}>
+            <Container to={"/pokemon/" + props.pokemon.name}>
+                <Title>#{props.pokemon.id}, {props.pokemon.name}</Title>
+            </Container>
+        </StyledLink>
+
     );
 }
 

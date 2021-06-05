@@ -29,15 +29,9 @@ function App() {
             <Router>
                 <Body>
                     <Switch>
-                        <Route path="/pokemon">
-                            <Pokemon />
-                        </Route>
-                        <Route path="/favorites">
-                            <Favorites />
-                        </Route>
-                        <Route path="/">
-                            <Search />
-                        </Route>
+                        <Route path="/pokemon/:pokemonName" component={Pokemon}></Route>
+                        <Route path="/favorites" component={Favorites}></Route>
+                        <Route path="/" component={Search}></Route>
                     </Switch>
                 </Body>
                 <Navbar />

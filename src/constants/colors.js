@@ -1,3 +1,3 @@
-const COLORS = {
+export const COLORS = {
     
 }

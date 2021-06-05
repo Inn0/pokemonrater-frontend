@@ -57,7 +57,7 @@ function Search() {
 
             <List>
                 {searchResults.map(pokemon => {
-                    return <ResultItem pokemon={pokemon}/>
+                    return <ResultItem key={pokemon.id} pokemon={pokemon}/>
                 })}
             </List>
         </SearchContainer>
