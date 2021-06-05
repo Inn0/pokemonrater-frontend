@@ -15,6 +15,8 @@ const SearchBar = styled.input`
     font-size: 18px;
     width: 100%;
     margin-bottom: 0px;
+    border-radius: 5px;
+    border: 1px solid black;
 `
 
 const SearchContainer = styled.div`

@@ -8,11 +8,12 @@ const NavbarContainer = styled.div`
     width: 100vw;
     margin: 0;
     padding: 0;
-    background-color: grey;
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     line-height: ${VALUES.navbarHeight};
+    box-shadow: 0px -2px 3px 2px rgba(0,0,0,0.1);
 `
 
 const StyledLink = styled(Link)`
