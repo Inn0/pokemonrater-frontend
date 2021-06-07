@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { STATCOLORS } from '../../constants/colors'
 
 const StatsContainer = styled.div`
     display: flex;
@@ -18,40 +19,88 @@ const StatsRow = styled.div`
     justify-content: space-between;
 `
 
-const temp = styled.p`
+const Text = styled.p`
     margin: 0;
+    min-width: 50px;
+    text-align: center;
+`
+
+const StatBar = styled.div`
+    width: 100%;
+    height; 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.2);
+`
+
+const StatValue = styled.div`
+    background-color: ${(props) => {
+        if(props.value < 50){
+            return STATCOLORS.low
+        } else if (props.value < 80) {
+            return STATCOLORS.medium
+        } else if (props.value < 120) {
+            return STATCOLORS.high
+        } else { return STATCOLORS.super }
+    }};
+    width: ${props => (props.value / 255) * 100}%;
+    max-height: 7px;
+    min-height: 7px;
+    margin: 0;
+    padding: 0;
+    border-radius: 4px;
+    border: 1px solid rgba(0,0,0,0.2);
 `
 
 function Stats(props) {
     return (
         <StatsContainer>
             <StatsRow>
-                <temp>HP: </temp>
-                <temp>{props.stats[0].value}</temp>
+                <Text>HP: </Text>
+                <StatBar>
+                    <StatValue value={props.stats[0].value}></StatValue>
+                </StatBar>
+                <Text>{props.stats[0].value}</Text>
             </StatsRow>
             <StatsRow>
-                <temp>Atk: </temp>
-                <temp>{props.stats[1].value}</temp>
+                <Text>Atk: </Text>
+                <StatBar>
+                    <StatValue value={props.stats[1].value}></StatValue>
+                </StatBar>
+                <Text>{props.stats[1].value}</Text>
             </StatsRow>
             <StatsRow>
-                <temp>Def: </temp>
-                <temp>{props.stats[2].value}</temp>
+                <Text>Def: </Text>
+                <StatBar>
+                    <StatValue value={props.stats[2].value}></StatValue>
+                </StatBar>
+                <Text>{props.stats[2].value}</Text>
             </StatsRow>
             <StatsRow>
-                <temp>SpA: </temp>
-                <temp>{props.stats[3].value}</temp>
+                <Text>SpA: </Text>
+                <StatBar>
+                    <StatValue value={props.stats[3].value}></StatValue>
+                </StatBar>
+                <Text>{props.stats[3].value}</Text>
             </StatsRow>
             <StatsRow>
-                <temp>SpD: </temp>
-                <temp>{props.stats[4].value}</temp>
+                <Text>SpD: </Text>
+                <StatBar>
+                    <StatValue value={props.stats[4].value}></StatValue>
+                </StatBar>
+                <Text>{props.stats[4].value}</Text>
             </StatsRow>
             <StatsRow>
-                <temp>Spe: </temp>
-                <temp>{props.stats[5].value}</temp>
+                <Text>Spe: </Text>
+                <StatBar>
+                    <StatValue value={props.stats[5].value}></StatValue>
+                </StatBar>
+                <Text>{props.stats[5].value}</Text>
             </StatsRow>
             <StatsRow>
-                <temp><b>Total</b>: </temp>
-                <temp><b>{props.stats[0].value + props.stats[1].value + props.stats[2].value + props.stats[3].value + props.stats[4].value + props.stats[5].value}</b></temp>
+                <Text><b>Total</b>: </Text>
+                <Text><b>{props.stats[0].value + props.stats[1].value + props.stats[2].value + props.stats[3].value + props.stats[4].value + props.stats[5].value}</b></Text>
             </StatsRow>
         </StatsContainer>
     );
