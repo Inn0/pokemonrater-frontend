@@ -45,12 +45,14 @@ const StatValue = styled.div`
         } else { return STATCOLORS.super }
     }};
     width: ${props => (props.value / 255) * 100}%;
-    max-height: 7px;
-    min-height: 7px;
+    max-height: 8px;
+    min-height: 8px;
     margin: 0;
     padding: 0;
     border-radius: 4px;
     border: 1px solid rgba(0,0,0,0.2);
+    margin-left: -1px;
+    margin-top: -1px;
 `
 
 function Stats(props) {
