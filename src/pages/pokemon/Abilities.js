@@ -19,7 +19,9 @@ function Abilities(props) {
     return (
         <AbilitiesContainer>
             <Text><b>Abilities</b>: {props.abilities[0].name}{props.abilities.length > 2 ? ", " + props.abilities[1].name : ""}</Text>
-            <Text><b>Hidden ability</b>: {props.abilities[props.abilities.length-1].name}</Text>
+            {props.abilities.length > 1 &&
+                <Text><b>Hidden ability</b>: {props.abilities[props.abilities.length - 1].name}</Text>
+            }
         </AbilitiesContainer>
     );
 }

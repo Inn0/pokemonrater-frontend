@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const BackgroundColor = styled.div`
     width: 100vw;
-    height: 200px;
+    height: 210px;
     background-color: ${props => props.color};
     display: flex;
     justify-content: center;
@@ -23,17 +23,11 @@ const BackgroundColor = styled.div`
     justify-content: space-between;
 `
 
-const SpriteContainer = styled.div`
-    display: inline-block;
-    height: 200px;
-    width: 200px;
-    overflow: hidden;
-`
-
 const Sprite = styled.img`
     margin: auto
     width: 200px;
     height: 200px;
+    padding: 5px;
 `
 
 const ContentContainer = styled.div`
@@ -60,6 +54,7 @@ const Name = styled.p`
 const Back = styled(Link)`
     text-decoration: none;
     color: black;
+    height: 50px;
 `
 
 const BackChevron = styled(FaChevronLeft)`
@@ -128,9 +123,7 @@ function Pokemon(props) {
                         <Back to="/search">
                             <BackChevron />
                         </Back>
-                        <SpriteContainer>
-                            <Sprite src={pokemon.sprite.default} alt={pokemonName + " sprite"} />
-                        </SpriteContainer>
+                        <Sprite src={pokemon.sprite.default} alt={pokemonName + " sprite"} />
                         <Favorite />
                     </BackgroundColor>
                     <Header>
