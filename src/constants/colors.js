@@ -25,3 +25,11 @@ export const STATCOLORS = {
     high: "#a0e515",
     super: "#00c2b8"
 }
+
+export const DEFENSECOLORS = {
+    black: '#2e3436',
+    darkRed: '#7c0000',
+    red: '#a40000',
+    green: '#4e9a06',
+    brightGreen: '#73d216'
+}

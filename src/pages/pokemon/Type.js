@@ -13,6 +13,7 @@ const TypeContainer = styled.div`
     text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
     margin-left: 5px;
     margin-right: 5px;
+    display: flex;
 `
 
 const TypeTitle = styled.p`

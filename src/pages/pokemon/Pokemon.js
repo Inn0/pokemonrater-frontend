@@ -6,6 +6,8 @@ import Stats from './Stats'
 import Type from './Type'
 import { COLORS } from '../../constants/colors'
 import Abilities from './Abilities'
+import Defenses from './Defenses'
+import { VALUES } from '../../constants/values'
 
 const Container = styled.div`
     display: flex;
@@ -34,6 +36,7 @@ const ContentContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
+    height: calc(100vh - ${VALUES.navbarHeight});
 `
 
 const Header = styled.div`
@@ -128,7 +131,7 @@ function Pokemon(props) {
                     </BackgroundColor>
                     <Header>
                         <Name>
-                            #{pokemon.id}, {pokemonName}
+                            #{pokemon.id}, {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
                         </Name>
                     </Header>
                     <TypeContainer>
@@ -138,6 +141,7 @@ function Pokemon(props) {
                     </TypeContainer>
                     <Stats stats={pokemon.stats} />
                     <Abilities abilities={pokemon.abilities} />
+                    <Defenses defenses={pokemon.defenses} />
                 </ContentContainer>
             }
             {loading &&

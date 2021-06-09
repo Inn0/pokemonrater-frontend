@@ -8,6 +8,7 @@ const StatsContainer = styled.div`
     width: calc(100vw - 20px);
     margin-left: 10px;
     margin-right: 10px;
+    margin-top: 10px;
 `
 
 const StatsRow = styled.div`
