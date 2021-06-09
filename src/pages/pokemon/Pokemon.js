@@ -86,7 +86,7 @@ function Pokemon(props) {
     const [bgColor, setBgColor] = useState("lightgrey")
 
     useEffect(() => {
-        fetch('https://pokemonrater-backend.herokuapp.com/pokemon/' + pokemonName.toLowerCase())
+        fetch('https://pokemonrater-api.herokuapp.com/pokemon/name/' + pokemonName.toLowerCase())
             .then(res => res.json())
             .then(res => { setPokemon(res); setLoading(false); getType(res); })
     }, [pokemonName])
@@ -123,7 +123,7 @@ function Pokemon(props) {
                         <Back to="/search">
                             <BackChevron />
                         </Back>
-                        <Sprite src={pokemon.sprite.default} alt={pokemonName + " sprite"} />
+                        <Sprite src={pokemon.sprites.default} alt={pokemonName + " sprite"} />
                         <Favorite />
                     </BackgroundColor>
                     <Header>
@@ -139,6 +139,9 @@ function Pokemon(props) {
                     <Stats stats={pokemon.stats} />
                     <Abilities abilities={pokemon.abilities} />
                 </ContentContainer>
+            }
+            {loading &&
+                <p>Loading...</p>
             }
         </Container>
     );

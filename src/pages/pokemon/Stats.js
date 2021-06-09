@@ -61,48 +61,48 @@ function Stats(props) {
             <StatsRow>
                 <Text>HP: </Text>
                 <StatBar>
-                    <StatValue value={props.stats[0].value}></StatValue>
+                    <StatValue value={props.stats.hp}></StatValue>
                 </StatBar>
-                <Text>{props.stats[0].value}</Text>
+                <Text>{props.stats.hp}</Text>
             </StatsRow>
             <StatsRow>
                 <Text>Atk: </Text>
                 <StatBar>
-                    <StatValue value={props.stats[1].value}></StatValue>
+                    <StatValue value={props.stats.atk}></StatValue>
                 </StatBar>
-                <Text>{props.stats[1].value}</Text>
+                <Text>{props.stats.atk}</Text>
             </StatsRow>
             <StatsRow>
                 <Text>Def: </Text>
                 <StatBar>
-                    <StatValue value={props.stats[2].value}></StatValue>
+                    <StatValue value={props.stats.def}></StatValue>
                 </StatBar>
-                <Text>{props.stats[2].value}</Text>
+                <Text>{props.stats.def}</Text>
             </StatsRow>
             <StatsRow>
                 <Text>SpA: </Text>
                 <StatBar>
-                    <StatValue value={props.stats[3].value}></StatValue>
+                    <StatValue value={props.stats.spa}></StatValue>
                 </StatBar>
-                <Text>{props.stats[3].value}</Text>
+                <Text>{props.stats.spa}</Text>
             </StatsRow>
             <StatsRow>
                 <Text>SpD: </Text>
                 <StatBar>
-                    <StatValue value={props.stats[4].value}></StatValue>
+                    <StatValue value={props.stats.spd}></StatValue>
                 </StatBar>
-                <Text>{props.stats[4].value}</Text>
+                <Text>{props.stats.spd}</Text>
             </StatsRow>
             <StatsRow>
                 <Text>Spe: </Text>
                 <StatBar>
-                    <StatValue value={props.stats[5].value}></StatValue>
+                    <StatValue value={props.stats.spe}></StatValue>
                 </StatBar>
-                <Text>{props.stats[5].value}</Text>
+                <Text>{props.stats.spe}</Text>
             </StatsRow>
             <StatsRow>
                 <Text><b>Total</b>: </Text>
-                <Text><b>{props.stats[0].value + props.stats[1].value + props.stats[2].value + props.stats[3].value + props.stats[4].value + props.stats[5].value}</b></Text>
+                <Text><b>{props.stats.hp + props.stats.atk + props.stats.def + props.stats.spa + props.stats.spd + props.stats.spe}</b></Text>
             </StatsRow>
         </StatsContainer>
     );

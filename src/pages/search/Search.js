@@ -35,7 +35,7 @@ function Search() {
     const [searchResults, setSearchResults] = useState([])
 
     useEffect(() => {
-        fetch('https://pokemonrater-backend.herokuapp.com/nationaldex')
+        fetch('https://pokemonrater-api.herokuapp.com/pokemon/nationaldex')
             .then(res => res.json())
             .then(res => setPokemon(res))
     }, [])
