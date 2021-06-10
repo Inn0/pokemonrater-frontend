@@ -63,7 +63,7 @@ function Navbar() {
             </StyledLink>
             <StyledLink to="/favorites">
                 <FaveIcon style={{ color: location.pathname === '/favorites' ? "red" : "black" }}></FaveIcon>
-                <NavTitle style={{ color: location.pathname === '/favorites' ? "red" : "black" }}>Search</NavTitle>
+                <NavTitle style={{ color: location.pathname === '/favorites' ? "red" : "black" }}>Favorites</NavTitle>
             </StyledLink>
         </NavbarContainer>
     )
