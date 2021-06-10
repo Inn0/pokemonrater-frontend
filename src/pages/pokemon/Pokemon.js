@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from "react-router-dom"
 import styled from 'styled-components'
-import { FaChevronLeft, FaRegHeart } from 'react-icons/fa'
+import { FaChevronLeft, FaRegHeart, FaChevronRight } from 'react-icons/fa'
 import Stats from './Stats'
 import Type from './Type'
 import { COLORS } from '../../constants/colors'
@@ -42,7 +42,7 @@ const ContentContainer = styled.div`
 const Header = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     height: 50px;
     line-height: 50px;
     box-shadow: 0px -4px 3px 2px rgba(0,0,0,0.1);
@@ -82,6 +82,22 @@ const TypeContainer = styled.div`
     line-height: 40px;
 `
 
+const PreviousButton = styled(FaChevronLeft)`
+    color: black;
+    height: 30px;
+    width: 30px;
+    text-decoration: none;
+    margin: 10px;
+`
+
+const NextButton = styled(FaChevronRight)`
+    color: black;
+    height: 30px;
+    width: 30px;
+    text-decoration: none;
+    margin: 10px;
+`
+
 function Pokemon(props) {
     const { pokemonName } = useParams()
     const [pokemon, setPokemon] = useState({})
@@ -92,7 +108,7 @@ function Pokemon(props) {
         fetch('https://pokemonrater-api.herokuapp.com/pokemon/name/' + pokemonName.toLowerCase())
             .then(res => res.json())
             .then(res => { setPokemon(res); setLoading(false); getType(res); })
-    }, [pokemonName])
+    }, [pokemon])
 
     function getType(pokemon) {
         switch (pokemon.types[0].name) {
@@ -130,9 +146,15 @@ function Pokemon(props) {
                         <Favorite />
                     </BackgroundColor>
                     <Header>
+                        <Link to={"/pokemon/" + (pokemon.id - 1)}>
+                            <PreviousButton />
+                        </Link>
                         <Name>
-                            #{pokemon.id}, {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
+                            #{pokemon.id}, {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                         </Name>
+                        <Link to={"/pokemon/" + (pokemon.id + 1)}>
+                            <NextButton />
+                        </Link>
                     </Header>
                     <TypeContainer>
                         {pokemon.types.map(type => {
