@@ -25,7 +25,6 @@ const StyledLink = styled(Link)`
 function Navbar() {
     return (
         <NavbarContainer>
-            {/* <StyledLink to="/pokemon/abra">Pokemon</StyledLink> */}
             <StyledLink to="/">Search</StyledLink>
             <StyledLink to="/favorites">Favorites</StyledLink>
         </NavbarContainer>

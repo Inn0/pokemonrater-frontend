@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { COLORS } from '../../constants/colors'
 
 const TypeContainer = styled.div`
-    width: 75px;
+    min-width: 75px;
     height: 30px;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius: 4px;
@@ -11,8 +11,7 @@ const TypeContainer = styled.div`
     line-height: 30px;
     text-align: center;
     text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 5px;
     display: flex;
 `
 

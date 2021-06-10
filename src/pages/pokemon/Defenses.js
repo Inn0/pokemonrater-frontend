@@ -14,14 +14,11 @@ const DefenseRow = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding: 5px;
 `
 
 const FactorContainer = styled.div`
     height: 30px;
-    width: 30px;
-    margin-left: 0;
-    margin-right: 5px;
+    min-width: 30px;
     line-height: 30px;
     font-size: 18px;
     text-align: center;
@@ -30,65 +27,80 @@ const FactorContainer = styled.div`
     border: 1px solid rgba(0,0,0,0.3);
     text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
     color: white;
+    margin: 5px;
 `
 
 const FactorTitle = styled.p`
     margin: auto;
 `
 
+const TypeContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+`
+
 function Defenses(props) {
     return (
         <DefenseContainer>
-            {console.log(props)}
             <DefenseRow>
                 <FactorContainer color={DEFENSECOLORS.black}>
                     <FactorTitle>0</FactorTitle>
                 </FactorContainer>
-                {props.defenses.map(x => {
-                    if (x.factor === 0) {
-                        return <Type type={x.name}></Type>
-                    }
-                })}
+                <TypeContainer>
+                    {props.defenses.map(x => {
+                        if (x.factor === 0) {
+                            return <Type key={x.id} type={x.name}></Type>
+                        }
+                    })}
+                </TypeContainer>
             </DefenseRow>
             <DefenseRow>
                 <FactorContainer color={DEFENSECOLORS.darkRed}>
                     <FactorTitle>&frac14;</FactorTitle>
                 </FactorContainer>
-                {props.defenses.map(x => {
-                    if (x.factor === 0.25) {
-                        return <Type type={x.name}></Type>
-                    }
-                })}
+                <TypeContainer>
+                    {props.defenses.map(x => {
+                        if (x.factor === 0.25) {
+                            return <Type key={x.id} type={x.name}></Type>
+                        }
+                    })}
+                </TypeContainer>
             </DefenseRow>
             <DefenseRow>
                 <FactorContainer color={DEFENSECOLORS.red}>
                     <FactorTitle>&frac12;</FactorTitle>
                 </FactorContainer>
-                {props.defenses.map(x => {
-                    if (x.factor === 0.5) {
-                        return <Type type={x.name}></Type>
-                    }
-                })}
+                <TypeContainer>
+                    {props.defenses.map(x => {
+                        if (x.factor === 0.5) {
+                            return <Type key={x.id} type={x.name}></Type>
+                        }
+                    })}
+                </TypeContainer>
             </DefenseRow>
             <DefenseRow>
                 <FactorContainer color={DEFENSECOLORS.green}>
                     <FactorTitle>2</FactorTitle>
                 </FactorContainer>
-                {props.defenses.map(x => {
-                    if (x.factor === 2) {
-                        return <Type type={x.name}></Type>
-                    }
-                })}
+                <TypeContainer>
+                    {props.defenses.map(x => {
+                        if (x.factor === 2) {
+                            return <Type key={x.id} type={x.name}></Type>
+                        }
+                    })}
+                </TypeContainer>
             </DefenseRow>
             <DefenseRow>
                 <FactorContainer color={DEFENSECOLORS.brightGreen}>
                     <FactorTitle>4</FactorTitle>
                 </FactorContainer>
-                {props.defenses.map(x => {
-                    if (x.factor === 4) {
-                        return <Type type={x.name}></Type>
-                    }
-                })}
+                <TypeContainer>
+                    {props.defenses.map(x => {
+                        if (x.factor === 4) {
+                            return <Type key={x.id} type={x.name}></Type>
+                        }
+                    })}
+                </TypeContainer>
             </DefenseRow>
         </DefenseContainer>
     );
