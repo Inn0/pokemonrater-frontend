@@ -56,6 +56,7 @@ const PopupContent = styled.div`
 const PopupTitle = styled.div`
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     font-size: 22px;
     font-weight: 550;
 `

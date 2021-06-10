@@ -39,9 +39,21 @@ const TypeContainer = styled.div`
     flex-wrap: wrap;
 `
 
+const Title = styled.p`
+    font-size: 18px;
+    font-weight: 550;
+    margin: 0;
+    margin-left: calc(50% - 60px);
+    margin-right: calc(50% - 60px);
+    margin-bottom: 5px;
+    padding: 0;
+    width: 120px;
+`
+
 function Defenses(props) {
     return (
         <DefenseContainer>
+            <Title>Type defenses</Title>
             <DefenseRow>
                 <FactorContainer color={DEFENSECOLORS.black}>
                     <FactorTitle>0</FactorTitle>
