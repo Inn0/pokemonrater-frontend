@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { DARKTHEME } from '../constants/colors'
 
 const PopupOverlay = styled.div`
     position: fixed;
@@ -18,7 +19,7 @@ const PopupContainer = styled.div`
     left: 10%;
     right: 10%;
     margin: auto;
-    background: white;
+    background: ${DARKTHEME.color2};
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -42,7 +43,7 @@ const CloseButton = styled.div`
     line-height: 40px;
     text-align: center;
     font-size: 20px;
-    color: white;
+    color: ${DARKTHEME.textColor};
     justify-content: center;
     border-radius: 5px;
 `
