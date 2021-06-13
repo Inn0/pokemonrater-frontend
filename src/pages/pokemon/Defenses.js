@@ -43,36 +43,24 @@ const Title = styled.p`
     font-size: 18px;
     font-weight: 550;
     margin: 0;
-    margin-left: calc(50% - 60px);
-    margin-right: calc(50% - 60px);
+    margin-left: calc(50% - 70px);
+    margin-right: calc(50% - 70px);
     margin-bottom: 5px;
     padding: 0;
-    width: 120px;
+    width: 140px;
 `
 
 function Defenses(props) {
     return (
         <DefenseContainer>
-            <Title>Type defenses</Title>
-            <DefenseRow>
-                <FactorContainer color={DEFENSECOLORS.black}>
-                    <FactorTitle>0</FactorTitle>
-                </FactorContainer>
-                <TypeContainer>
-                    {props.defenses.map(x => {
-                        if (x.factor === 0) {
-                            return <Type key={x.id} type={x.name}></Type>
-                        }
-                    })}
-                </TypeContainer>
-            </DefenseRow>
+            <Title>Type weaknesses</Title>
             <DefenseRow>
                 <FactorContainer color={DEFENSECOLORS.darkRed}>
-                    <FactorTitle>&frac14;</FactorTitle>
+                    <FactorTitle>4</FactorTitle>
                 </FactorContainer>
                 <TypeContainer>
                     {props.defenses.map(x => {
-                        if (x.factor === 0.25) {
+                        if (x.factor === 4) {
                             return <Type key={x.id} type={x.name}></Type>
                         }
                     })}
@@ -80,18 +68,6 @@ function Defenses(props) {
             </DefenseRow>
             <DefenseRow>
                 <FactorContainer color={DEFENSECOLORS.red}>
-                    <FactorTitle>&frac12;</FactorTitle>
-                </FactorContainer>
-                <TypeContainer>
-                    {props.defenses.map(x => {
-                        if (x.factor === 0.5) {
-                            return <Type key={x.id} type={x.name}></Type>
-                        }
-                    })}
-                </TypeContainer>
-            </DefenseRow>
-            <DefenseRow>
-                <FactorContainer color={DEFENSECOLORS.green}>
                     <FactorTitle>2</FactorTitle>
                 </FactorContainer>
                 <TypeContainer>
@@ -103,12 +79,36 @@ function Defenses(props) {
                 </TypeContainer>
             </DefenseRow>
             <DefenseRow>
-                <FactorContainer color={DEFENSECOLORS.brightGreen}>
-                    <FactorTitle>4</FactorTitle>
+                <FactorContainer color={DEFENSECOLORS.green}>
+                    <FactorTitle>&frac12;</FactorTitle>
                 </FactorContainer>
                 <TypeContainer>
                     {props.defenses.map(x => {
-                        if (x.factor === 4) {
+                        if (x.factor === 0.5) {
+                            return <Type key={x.id} type={x.name}></Type>
+                        }
+                    })}
+                </TypeContainer>
+            </DefenseRow>
+            <DefenseRow>
+                <FactorContainer color={DEFENSECOLORS.brightGreen}>
+                    <FactorTitle>&frac14;</FactorTitle>
+                </FactorContainer>
+                <TypeContainer>
+                    {props.defenses.map(x => {
+                        if (x.factor === 0.25) {
+                            return <Type key={x.id} type={x.name}></Type>
+                        }
+                    })}
+                </TypeContainer>
+            </DefenseRow>
+            <DefenseRow>
+                <FactorContainer color={DEFENSECOLORS.black}>
+                    <FactorTitle>0</FactorTitle>
+                </FactorContainer>
+                <TypeContainer>
+                    {props.defenses.map(x => {
+                        if (x.factor === 0) {
                             return <Type key={x.id} type={x.name}></Type>
                         }
                     })}
