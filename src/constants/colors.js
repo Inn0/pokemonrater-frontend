@@ -33,3 +33,10 @@ export const DEFENSECOLORS = {
     green: '#4e9a06',
     brightGreen: '#73d216'
 }
+
+export const DARKTHEME = {
+    textColor: '#c9c9c9',
+    background: '#121212',
+    color1: '#1e1e1e',
+    color2: '#212121'
+}

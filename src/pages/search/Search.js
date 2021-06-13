@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { VALUES } from '../../constants/values'
 import ResultItem from './ResultItem'
+import { DARKTHEME } from '../../constants/colors'
 
 const List = styled.div`
     overflow: auto;
-    max-height: calc(100vh - 55px - ${VALUES.navbarHeight});
+    max-height: calc(100vh - 52px - ${VALUES.navbarHeight});
     width: 100vw;
 `
 
@@ -17,11 +18,14 @@ const SearchBar = styled.input`
     margin-bottom: 0px;
     border-radius: 5px;
     border: 1px solid black;
+    background-color: ${DARKTHEME.color1};
+    color: ${DARKTHEME.textColor};
 `
 
 const SearchContainer = styled.div`
     display: flex;
     flex-direction: column;
+    background-color: ${DARKTHEME.background};
 `
 
 const SearchBarContainer = styled.div`

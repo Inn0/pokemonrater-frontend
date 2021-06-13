@@ -32,7 +32,7 @@ const StatBar = styled.div`
     margin-top: 10px;
     margin-bottom: 10px;
     border-radius: 4px;
-    border: 1px solid rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.8);
 `
 
 const StatValue = styled.div`

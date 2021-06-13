@@ -10,6 +10,7 @@ import {
     Switch,
     Route
 } from "react-router-dom"
+import { DARKTHEME } from './constants/colors'
 
 const Container = styled.div`
     padding: 0px;
@@ -17,6 +18,8 @@ const Container = styled.div`
     user-select: none;
     width: 100vw;
     height: 100vh;
+    background-color: ${DARKTHEME.background};
+    color: ${DARKTHEME.textColor};
 `
 
 const Body = styled.div`

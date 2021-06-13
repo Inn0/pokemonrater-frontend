@@ -8,11 +8,13 @@ import { COLORS } from '../../constants/colors'
 import Abilities from './Abilities'
 import Defenses from './Defenses'
 import { VALUES } from '../../constants/values'
+import { DARKTHEME } from '../../constants/colors'
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     overflow: auto;
+    background-color: ${DARKTHEME.background};
 `
 
 const BackgroundColor = styled.div`
@@ -65,6 +67,7 @@ const BackChevron = styled(FaChevronLeft)`
     height: 30px;
     padding: 10px;
     margin-top: 5px;
+    color: ${DARKTHEME.color1};
 `
 
 const Favorite = styled(FaRegHeart)`
@@ -72,6 +75,7 @@ const Favorite = styled(FaRegHeart)`
     height: 30px;
     padding: 10px;
     margin-top: 5px;
+    color: ${DARKTHEME.color1};
 `
 
 const TypeContainer = styled.div`
@@ -88,6 +92,7 @@ const PreviousButton = styled(FaChevronLeft)`
     width: 30px;
     text-decoration: none;
     margin: 10px;
+    color: ${DARKTHEME.textColor};
 `
 
 const NextButton = styled(FaChevronRight)`
@@ -96,6 +101,7 @@ const NextButton = styled(FaChevronRight)`
     width: 30px;
     text-decoration: none;
     margin: 10px;
+    color: ${DARKTHEME.textColor};
 `
 
 function Pokemon(props) {
@@ -161,8 +167,8 @@ function Pokemon(props) {
                             return <Type key={type.id} type={type.name} />
                         })}
                     </TypeContainer>
-                    <Stats stats={pokemon.stats} />
                     <Abilities abilities={pokemon.abilities} />
+                    <Stats stats={pokemon.stats} />
                     <Defenses defenses={pokemon.defenses} />
                 </ContentContainer>
             }

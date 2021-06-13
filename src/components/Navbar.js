@@ -4,18 +4,18 @@ import { VALUES } from '../constants/values'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import { FaSearch, FaStar } from 'react-icons/fa'
+import { DARKTHEME } from '../constants/colors'
 
 const NavbarContainer = styled.div`
     height: ${VALUES.navbarHeight};
     width: 100vw;
     margin: 0;
     padding: 0;
-    background-color: white;
+    background-color: ${DARKTHEME.color2};
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     line-height: ${VALUES.navbarHeight};
-    box-shadow: 0px -2px 3px 2px rgba(0,0,0,0.1);
 `
 
 const StyledLink = styled(Link)`
@@ -58,12 +58,12 @@ function Navbar() {
     return (
         <NavbarContainer>
             <StyledLink to="/">
-                <SearchIcon style={{ color: location.pathname === '/' ? "red" : "black" }}></SearchIcon>
-                <NavTitle style={{ color: location.pathname === '/' ? "red" : "black" }}>Search</NavTitle>
+                <SearchIcon style={{ color: location.pathname === '/' ? "red" : DARKTHEME.textColor }}></SearchIcon>
+                <NavTitle style={{ color: location.pathname === '/' ? "red" : DARKTHEME.textColor }}>Search</NavTitle>
             </StyledLink>
             <StyledLink to="/favorites">
-                <FaveIcon style={{ color: location.pathname === '/favorites' ? "red" : "black" }}></FaveIcon>
-                <NavTitle style={{ color: location.pathname === '/favorites' ? "red" : "black" }}>Favorites</NavTitle>
+                <FaveIcon style={{ color: location.pathname === '/favorites' ? "red" : DARKTHEME.textColor }}></FaveIcon>
+                <NavTitle style={{ color: location.pathname === '/favorites' ? "red" : DARKTHEME.textColor }}>Favorites</NavTitle>
             </StyledLink>
         </NavbarContainer>
     )

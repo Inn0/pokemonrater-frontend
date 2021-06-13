@@ -1,18 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { DARKTHEME } from '../../constants/colors'
 
 const Container = styled.div`
     width: calc(100vw - 40px);
     margin: 10px;
-    background-color: lightgrey;
+    background-color: ${DARKTHEME.color1};
     padding: 10px;
     border-radius: 5px;
+    z-index: 1;
 `
 
 const Title = styled.p`
     font-size: 16px;
     margin: 0;
+    color: ${DARKTHEME.textColor};
 `
 
 const StyledLink = styled(Link)`

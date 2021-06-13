@@ -18,12 +18,12 @@ const PopupContainer = styled.div`
     left: 10%;
     right: 10%;
     margin: auto;
-    margin-bottom: 25%;
-    margin-top: 75%;
     background: white;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
+    top: 50%;
+    transform: translateY(-50%);
 `
 
 const PopupBody = styled.div`
@@ -77,7 +77,7 @@ function Popup(props) {
                     {ability &&
                         <PopupContent>
                             <PopupTitle>{ability.name}</PopupTitle>
-                            <p>{ability.shortEffect}</p>
+                            <p>{ability.effect}</p>
                         </PopupContent>
                     }
                 </PopupBody>
