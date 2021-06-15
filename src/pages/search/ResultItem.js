@@ -9,7 +9,7 @@ const Container = styled.div`
     background-color: ${DARKTHEME.color1};
     padding: 10px;
     border-radius: 5px;
-    z-index: 1;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
 `
 
 const Title = styled.p`
