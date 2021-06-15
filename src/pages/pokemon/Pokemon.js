@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from "react-router-dom"
 import styled from 'styled-components'
-import { FaChevronLeft, FaRegHeart, FaChevronRight } from 'react-icons/fa'
+import { FaChevronLeft, FaRegHeart, FaChevronRight, FaHeart } from 'react-icons/fa'
 import Stats from './Stats'
 import Type from './Type'
 import { COLORS } from '../../constants/colors'
@@ -71,7 +71,15 @@ const BackChevron = styled(FaChevronLeft)`
     color: ${DARKTHEME.color1};
 `
 
-const Favorite = styled(FaRegHeart)`
+const FavoriteIcon = styled(FaRegHeart)`
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    margin-top: 5px;
+    color: ${DARKTHEME.color1};
+`
+
+const FavoriteIconFilled = styled(FaHeart)`
     width: 30px;
     height: 30px;
     padding: 10px;
@@ -110,11 +118,17 @@ function Pokemon(props) {
     const [pokemon, setPokemon] = useState({})
     const [loading, setLoading] = useState(true)
     const [bgColor, setBgColor] = useState("lightgrey")
+    const [isFavorite, setIsFavorite] = useState(false)
 
     useEffect(() => {
         fetch('https://pokemonrater-api.herokuapp.com/pokemon/name/' + pokemonName.toLowerCase())
             .then(res => res.json())
-            .then(res => { setPokemon(res); setLoading(false); getType(res); })
+            .then(res => { 
+                setPokemon(res); 
+                setLoading(false); 
+                getType(res); 
+                setIsFavorite(JSON.parse(localStorage.getItem('favorites')).includes(pokemon.id))
+            })
     }, [pokemon])
 
     function getType(pokemon) {
@@ -141,16 +155,41 @@ function Pokemon(props) {
         }
     }
 
+    function addToFavorites(id) {
+        let favorites = JSON.parse(localStorage.getItem('favorites'))
+
+        if(favorites == null){
+            favorites = []
+        }
+
+        if(favorites.includes(id)){
+            let index = favorites.indexOf(id)
+            if(index > -1){
+                favorites.splice(index, 1)
+            }
+            setIsFavorite(false)
+        } else {
+            favorites.push(id)
+            setIsFavorite(true)
+        }
+        localStorage.setItem('favorites', JSON.stringify(favorites))
+    }
+
     return (
         <Container>
             {!loading &&
                 <ContentContainer>
                     <BackgroundColor color={bgColor}>
-                        <Back to="/search">
+                        <Back to="/">
                             <BackChevron />
                         </Back>
                         <Sprite src={pokemon.sprites.default} alt={pokemonName + " sprite"} />
-                        <Favorite />
+                        {!isFavorite && 
+                            <FavoriteIcon onClick={() => addToFavorites(pokemon.id)}/>
+                        }
+                        {isFavorite &&
+                            <FavoriteIconFilled onClick={() => addToFavorites(pokemon.id)}/>
+                        }
                     </BackgroundColor>
                     <Header>
                         <Link to={"/pokemon/" + (pokemon.id - 1)}>
