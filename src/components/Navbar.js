@@ -16,6 +16,9 @@ const NavbarContainer = styled.div`
     flex-direction: row;
     justify-content: space-around;
     line-height: ${VALUES.navbarHeight};
+    box-shadow: 0 0 10px 6px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 10;
 `
 
 const StyledLink = styled(Link)`

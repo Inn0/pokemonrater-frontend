@@ -9,6 +9,7 @@ import Abilities from './Abilities'
 import Defenses from './Defenses'
 import { VALUES } from '../../constants/values'
 import { DARKTHEME } from '../../constants/colors'
+import Spacer from '../../components/Spacer'
 
 const Container = styled.div`
     display: flex;
@@ -170,6 +171,7 @@ function Pokemon(props) {
                     <Abilities abilities={pokemon.abilities} />
                     <Stats stats={pokemon.stats} />
                     <Defenses defenses={pokemon.defenses} />
+                    <Spacer></Spacer>
                 </ContentContainer>
             }
             {loading &&

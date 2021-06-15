@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { VALUES } from '../../constants/values'
 import ResultItem from './ResultItem'
 import { DARKTHEME } from '../../constants/colors'
+import Spacer from '../../components/Spacer'
 
 const List = styled.div`
     overflow: auto;
@@ -65,6 +66,7 @@ function Search() {
                 {searchResults.map(pokemon => {
                     return <ResultItem key={pokemon.id} pokemon={pokemon}/>
                 })}
+                <Spacer></Spacer>
             </List>
         </SearchContainer>
     );
