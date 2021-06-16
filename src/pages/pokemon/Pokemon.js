@@ -162,17 +162,21 @@ function Pokemon(props) {
             favorites = []
         }
 
-        if(favorites.includes(id)){
-            let index = favorites.indexOf(id)
-            if(index > -1){
-                favorites.splice(index, 1)
-            }
-            setIsFavorite(false)
+        if(favorites.length >= 12){
+            alert('You cannot have more than 12 favorite Pokémon!')
         } else {
-            favorites.push(id)
-            setIsFavorite(true)
+            if(favorites.includes(id)){
+                let index = favorites.indexOf(id)
+                if(index > -1){
+                    favorites.splice(index, 1)
+                }
+                setIsFavorite(false)
+            } else {
+                favorites.push(id)
+                setIsFavorite(true)
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites))
         }
-        localStorage.setItem('favorites', JSON.stringify(favorites))
     }
 
     return (

@@ -3,12 +3,13 @@ import styled from 'styled-components'
 import { DARKTHEME } from '../../constants/colors'
 import Type from '../pokemon/Type'
 import { FaTrash } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
     min-height: 150px;
     border-radius: 5px;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
@@ -60,6 +61,11 @@ const RemoveIcon = styled(FaTrash)`
     margin-right: 10px;
 `
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: ${DARKTHEME.textColor};
+`
+
 function FavoriteItem(props) {
     const [pokemon, setPokemon] = useState({})
     const [loading, setLoading] = useState(true)
@@ -71,14 +77,16 @@ function FavoriteItem(props) {
                 setPokemon(res);
                 setLoading(false);
             })
-    }, [pokemon])
+    }, [])
 
-    function removeFromFavorites(id){
+    var removeFromFavorites = (e) => {
+        e.stopPropagation()
+
         let temp = JSON.parse(localStorage.getItem('favorites'))
 
-        if(temp.includes(id)){
-            let index = temp.indexOf(id)
-            if(index > -1){
+        if (temp.includes(pokemon.id)) {
+            let index = temp.indexOf(pokemon.id)
+            if (index > -1) {
                 temp.splice(index, 1)
             }
         }
@@ -92,8 +100,10 @@ function FavoriteItem(props) {
             {!loading &&
                 <Container>
                     <TitleContainer>
-                        <Title>#{pokemon.id}, {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</Title>
-                        <RemoveIcon onClick={() => removeFromFavorites(pokemon.id)}></RemoveIcon>
+                        <StyledLink to={"/pokemon/" + pokemon.name}>
+                            <Title>#{pokemon.id}, {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</Title>
+                        </StyledLink>
+                        <RemoveIcon onClick={removeFromFavorites}></RemoveIcon>
                     </TitleContainer>
                     <ContentContainer>
                         <Sprite src={pokemon.sprites.default}></Sprite>

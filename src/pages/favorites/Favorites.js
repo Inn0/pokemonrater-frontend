@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { FaChevronLeft } from 'react-icons/fa'
 import { DARKTHEME } from '../../constants/colors'
 import FavoriteItem from './FavoriteItem'
+import Spacer from '../../components/Spacer'
 
 const Container = styled.div`
     display: flex;
@@ -22,6 +23,8 @@ const HeaderContainer = styled.div`
 const ContentContainer = styled.div`
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    max-height: calc(100vh - ${VALUES.navbarHeight} - 50px);
 `
 
 const Back = styled(Link)`
@@ -74,6 +77,7 @@ function Favorites() {
                 {favorites.map(pokemon => {
                     return <FavoriteItem id={pokemon} key={pokemon}></FavoriteItem>
                 })}
+                <Spacer></Spacer>
             </ContentContainer>
         </Container>
     );
