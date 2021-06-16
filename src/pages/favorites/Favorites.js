@@ -49,6 +49,14 @@ const HeaderTitle = styled.p`
     font-weight: 550;
 `
 
+const Message = styled.p`
+    margin: 10px;
+    height: calc(100vh - ${VALUES.navbarHeight} - 50px);
+    line-height: calc(100vh - ${VALUES.navbarHeight} - 50px);
+    color: ${DARKTHEME.textColor};
+    text-align: center;
+`
+
 function Favorites() {
     const [favorites, setFavorites] = useState([])
 
@@ -74,6 +82,9 @@ function Favorites() {
                 </HeaderTitle>
             </HeaderContainer>
             <ContentContainer>
+                {favorites.length < 1 && 
+                    <Message>No Pokémon are marked as favorite...</Message>
+                }
                 {favorites.map(pokemon => {
                     return <FavoriteItem id={pokemon} key={pokemon}></FavoriteItem>
                 })}

@@ -113,6 +113,14 @@ const NextButton = styled(FaChevronRight)`
     color: ${DARKTHEME.textColor};
 `
 
+const Message = styled.p`
+    margin: 10px;
+    height: calc(100vh - ${VALUES.navbarHeight} - 50px);
+    line-height: calc(100vh - ${VALUES.navbarHeight} - 50px);
+    color: ${DARKTHEME.textColor};
+    text-align: center;
+`
+
 function Pokemon(props) {
     const { pokemonName } = useParams()
     const [pokemon, setPokemon] = useState({})
@@ -121,6 +129,10 @@ function Pokemon(props) {
     const [isFavorite, setIsFavorite] = useState(false)
 
     useEffect(() => {
+        if(JSON.parse(localStorage.getItem('favorites')) == null){
+            localStorage.setItem('favorites', JSON.stringify([]))
+        }
+
         fetch('https://pokemonrater-api.herokuapp.com/pokemon/name/' + pokemonName.toLowerCase())
             .then(res => res.json())
             .then(res => { 
@@ -218,7 +230,7 @@ function Pokemon(props) {
                 </ContentContainer>
             }
             {loading &&
-                <p>Loading...</p>
+                <Message>Loading...</Message>
             }
         </Container>
     );
