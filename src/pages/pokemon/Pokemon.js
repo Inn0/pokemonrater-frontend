@@ -26,6 +26,7 @@ const BackgroundColor = styled.div`
     justify-content: center;
     flex-direction: row;
     justify-content: space-between;
+    box-shadow: inset 0 -10px 10px -10px #000000;
 `
 
 const Sprite = styled.img`
@@ -42,13 +43,39 @@ const ContentContainer = styled.div`
     height: calc(100vh - ${VALUES.navbarHeight});
 `
 
+const HeaderContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
 const Header = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 50px;
     line-height: 50px;
-    box-shadow: 0px -4px 3px 2px rgba(0,0,0,0.1);
+`
+
+const FormSelector = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+
+const Form = styled(Link)`
+    display: flex;
+    height: 30px;
+    flex-grow: 1;
+    justify-content: center;
+    line-height: 30px;
+    text-decoration: none;
+    color: ${DARKTHEME.textColor};
+    background-color: ${props => props.selected ? DARKTHEME.background : DARKTHEME.color1};
+`
+
+const FormName = styled.p`
+    margin: 0;
+    paddig: 0;
+    font-size: 14px;
 `
 
 const Name = styled.p`
@@ -129,19 +156,20 @@ function Pokemon(props) {
     const [isFavorite, setIsFavorite] = useState(false)
 
     useEffect(() => {
-        if(JSON.parse(localStorage.getItem('favorites')) == null){
+        if (JSON.parse(localStorage.getItem('favorites')) == null) {
             localStorage.setItem('favorites', JSON.stringify([]))
         }
 
         fetch('https://pokemonrater-api.herokuapp.com/pokemon/name/' + pokemonName.toLowerCase())
             .then(res => res.json())
-            .then(res => { 
-                setPokemon(res); 
-                setLoading(false); 
-                getType(res); 
-                setIsFavorite(JSON.parse(localStorage.getItem('favorites')).includes(pokemon.id))
+            .then(res => {
+                setPokemon(res);
+                setLoading(false);
+                getType(res);
+                setIsFavorite(JSON.parse(localStorage.getItem('favorites')).includes(pokemon.id));
+                console.log(res);
             })
-    }, [pokemon])
+    }, [pokemonName])
 
     function getType(pokemon) {
         switch (pokemon.types[0].name) {
@@ -170,16 +198,16 @@ function Pokemon(props) {
     function addToFavorites(id) {
         let favorites = JSON.parse(localStorage.getItem('favorites'))
 
-        if(favorites == null){
+        if (favorites == null) {
             favorites = []
         }
 
-        if(favorites.length >= 12){
+        if (favorites.length >= 12) {
             alert('You cannot have more than 12 favorite Pokémon!')
         } else {
-            if(favorites.includes(id)){
+            if (favorites.includes(id)) {
                 let index = favorites.indexOf(id)
-                if(index > -1){
+                if (index > -1) {
                     favorites.splice(index, 1)
                 }
                 setIsFavorite(false)
@@ -200,24 +228,37 @@ function Pokemon(props) {
                             <BackChevron />
                         </Back>
                         <Sprite src={pokemon.sprites.default} alt={pokemonName + " sprite"} />
-                        {!isFavorite && 
-                            <FavoriteIcon onClick={() => addToFavorites(pokemon.id)}/>
+                        {!isFavorite &&
+                            <FavoriteIcon onClick={() => addToFavorites(pokemon.id)} />
                         }
                         {isFavorite &&
-                            <FavoriteIconFilled onClick={() => addToFavorites(pokemon.id)}/>
+                            <FavoriteIconFilled onClick={() => addToFavorites(pokemon.id)} />
                         }
                     </BackgroundColor>
-                    <Header>
-                        <Link to={"/pokemon/" + (pokemon.id - 1)}>
-                            <PreviousButton />
-                        </Link>
-                        <Name>
-                            #{pokemon.id}, {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-                        </Name>
-                        <Link to={"/pokemon/" + (pokemon.id + 1)}>
-                            <NextButton />
-                        </Link>
-                    </Header>
+                    <HeaderContainer>
+                        {pokemon.alternateForms.length > 1 &&
+                            <FormSelector>
+                                {pokemon.alternateForms.map(form => {
+                                    return (
+                                        <Form to={"/pokemon/" + form.id} selected={form.id === pokemon.id}>
+                                            <FormName>{form.name.charAt(0).toUpperCase() + form.name.slice(1)}</FormName>
+                                        </Form>
+                                    )
+                                })}
+                            </FormSelector>
+                        }
+                        <Header>
+                            <Link to={"/pokemon/" + (pokemon.id - 1)}>
+                                <PreviousButton />
+                            </Link>
+                            <Name>
+                                #{pokemon.id}, {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                            </Name>
+                            <Link to={"/pokemon/" + (pokemon.id + 1)}>
+                                <NextButton />
+                            </Link>
+                        </Header>
+                    </HeaderContainer>
                     <TypeContainer>
                         {pokemon.types.map(type => {
                             return <Type key={type.id} type={type.name} />
