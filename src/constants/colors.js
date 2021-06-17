@@ -37,6 +37,7 @@ export const DEFENSECOLORS = {
 export const DARKTHEME = {
     textColor: '#c9c9c9',
     background: '#121212',
+    primary: '#ee1515',
     color1: '#1e1e1e',
     color2: '#212121'
 }

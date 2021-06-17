@@ -70,6 +70,7 @@ const Form = styled(Link)`
     text-decoration: none;
     color: ${DARKTHEME.textColor};
     background-color: ${props => props.selected ? DARKTHEME.background : DARKTHEME.color1};
+    box-shadow: ${props => props.selected ? "none" : "inset 0 -5px 5px -5px #000000" };
 `
 
 const FormName = styled.p`
@@ -111,7 +112,7 @@ const FavoriteIconFilled = styled(FaHeart)`
     height: 30px;
     padding: 10px;
     margin-top: 5px;
-    color: ${DARKTHEME.color1};
+    color: ${DARKTHEME.primary};
 `
 
 const TypeContainer = styled.div`
@@ -169,7 +170,7 @@ function Pokemon(props) {
                 setIsFavorite(JSON.parse(localStorage.getItem('favorites')).includes(pokemon.id));
                 console.log(res);
             })
-    }, [pokemonName])
+    }, [pokemonName, pokemon.id])
 
     function getType(pokemon) {
         switch (pokemon.types[0].name) {

@@ -61,12 +61,12 @@ function Navbar() {
     return (
         <NavbarContainer>
             <StyledLink to="/">
-                <SearchIcon style={{ color: location.pathname === '/' ? "red" : DARKTHEME.textColor }}></SearchIcon>
-                <NavTitle style={{ color: location.pathname === '/' ? "red" : DARKTHEME.textColor }}>Search</NavTitle>
+                <SearchIcon style={{ color: location.pathname === '/' ? DARKTHEME.primary : DARKTHEME.textColor }}></SearchIcon>
+                <NavTitle style={{ color: location.pathname === '/' ? DARKTHEME.primary : DARKTHEME.textColor }}>Search</NavTitle>
             </StyledLink>
             <StyledLink to="/favorites">
-                <FaveIcon style={{ color: location.pathname === '/favorites' ? "red" : DARKTHEME.textColor }}></FaveIcon>
-                <NavTitle style={{ color: location.pathname === '/favorites' ? "red" : DARKTHEME.textColor }}>Favorites</NavTitle>
+                <FaveIcon style={{ color: location.pathname === '/favorites' ? DARKTHEME.primary : DARKTHEME.textColor }}></FaveIcon>
+                <NavTitle style={{ color: location.pathname === '/favorites' ? DARKTHEME.primary : DARKTHEME.textColor }}>Favorites</NavTitle>
             </StyledLink>
         </NavbarContainer>
     )
