@@ -26,8 +26,8 @@ const StyledLink = styled(Link)`
 
 function ResultItem(props) {
     return (
-        <StyledLink to={"/pokemon/" + props.pokemon.name}>
-            <Container to={"/pokemon/" + props.pokemon.name}>
+        <StyledLink to={"/pokemon/" + props.pokemon.id}>
+            <Container to={"/pokemon/" + props.pokemon.id}>
                 <Title>#{props.pokemon.id}, {props.pokemon.name.charAt(0).toUpperCase() + props.pokemon.name.slice(1)}</Title>
             </Container>
         </StyledLink>

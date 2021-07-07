@@ -237,7 +237,7 @@ function Pokemon(props) {
                         }
                     </BackgroundColor>
                     <HeaderContainer>
-                        {pokemon.alternateForms.length > 1 &&
+                        {/* {pokemon.alternateForms.length > 1 &&
                             <FormSelector>
                                 {pokemon.alternateForms.map(form => {
                                     return (
@@ -247,7 +247,7 @@ function Pokemon(props) {
                                     )
                                 })}
                             </FormSelector>
-                        }
+                        } */}
                         <Header>
                             <Link to={"/pokemon/" + (pokemon.id - 1)}>
                                 <PreviousButton />
