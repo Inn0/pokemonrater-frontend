@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React from 'react'
 import styled from 'styled-components'
 import Type from './Type'

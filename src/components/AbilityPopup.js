@@ -5,7 +5,6 @@ import { DARKTHEME } from '../constants/colors'
 const PopupOverlay = styled.div`
     position: fixed;
     width: 100%;
-    // height: 100%;
     top: 0;
     left: 0;
     right: 0;
@@ -29,7 +28,6 @@ const PopupContainer = styled.div`
 
 const PopupBody = styled.div`
     display: flex;
-    // height: calc(100% - 60px);
     width: 100%:
     margin: 5px;
 `
