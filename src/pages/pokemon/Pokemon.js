@@ -61,6 +61,7 @@ const Name = styled.p`
     font-size: 24px;
     margin: 0;
     padding: 0;
+    overflow-y: scroll;
 `
 
 const Back = styled(Link)`
