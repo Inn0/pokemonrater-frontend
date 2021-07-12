@@ -44,11 +44,11 @@ const Title = styled.p`
     font-size: 18px;
     font-weight: 550;
     margin: 0;
-    margin-left: calc(50% - 70px);
-    margin-right: calc(50% - 70px);
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 5px;
     padding: 0;
-    width: 140px;
+    width: fit-content;
 `
 
 function Defenses(props) {
