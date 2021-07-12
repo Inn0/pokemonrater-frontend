@@ -17,9 +17,13 @@ const ButtonBody = styled.div`
     display: flex;
     font-size: 18px;
     font-weight: 500;
+    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
+    border: 1px solid rgba(0,0,0,0.5);
 
     &:hover {
         background-color: ${DARKTHEME.secondary};
+        box-shadow: none;
     }
 `
 
