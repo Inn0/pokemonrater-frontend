@@ -10,6 +10,7 @@ import Defenses from './Defenses'
 import { VALUES } from '../../constants/values'
 import { DARKTHEME } from '../../constants/colors'
 import Spacer from '../../components/Spacer'
+import AltForms from './AltForms'
 
 const Container = styled.div`
     display: flex;
@@ -54,29 +55,6 @@ const Header = styled.div`
     justify-content: space-between;
     height: 50px;
     line-height: 50px;
-`
-
-const FormSelector = styled.div`
-    display: flex;
-    flex-direction: row;
-`
-
-const Form = styled(Link)`
-    display: flex;
-    height: 30px;
-    flex-grow: 1;
-    justify-content: center;
-    line-height: 30px;
-    text-decoration: none;
-    color: ${DARKTHEME.textColor};
-    background-color: ${props => props.selected ? DARKTHEME.background : DARKTHEME.color1};
-    box-shadow: ${props => props.selected ? "none" : "inset 0 -5px 5px -5px #000000" };
-`
-
-const FormName = styled.p`
-    margin: 0;
-    paddig: 0;
-    font-size: 14px;
 `
 
 const Name = styled.p`
@@ -237,17 +215,6 @@ function Pokemon(props) {
                         }
                     </BackgroundColor>
                     <HeaderContainer>
-                        {/* {pokemon.alternateForms.length > 1 &&
-                            <FormSelector>
-                                {pokemon.alternateForms.map(form => {
-                                    return (
-                                        <Form to={"/pokemon/" + form.id} selected={form.id === pokemon.id}>
-                                            <FormName>{form.name.charAt(0).toUpperCase() + form.name.slice(1)}</FormName>
-                                        </Form>
-                                    )
-                                })}
-                            </FormSelector>
-                        } */}
                         <Header>
                             <Link to={"/pokemon/" + (pokemon.id - 1)}>
                                 <PreviousButton />
@@ -265,6 +232,9 @@ function Pokemon(props) {
                             return <Type key={type.id} type={type.name} />
                         })}
                     </TypeContainer>
+                    {pokemon.alternateForms.length > 1 &&
+                        <AltForms selected={pokemon.id} altForms={pokemon.alternateForms}/>
+                    }
                     <Abilities abilities={pokemon.abilities} />
                     <Stats stats={pokemon.stats} />
                     <Defenses defenses={pokemon.defenses} />
