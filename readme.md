@@ -31,4 +31,4 @@ The back-end project and its documentation can be found [here](https://github.co
 ## Credits
 The team consists out of two core members, with some testing-help from friends and family.
 1.  [Daan Brocatus](https://daanbrocatus.nl/) - Development/Concept/Design
-2.  [Thomas]() - Concept/Design
+2.  Thomas Willems - Concept/Design
