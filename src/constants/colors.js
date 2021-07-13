@@ -31,7 +31,8 @@ export const DEFENSECOLORS = {
     darkRed: '#7c0000',
     red: '#a40000',
     green: '#4e9a06',
-    brightGreen: '#73d216'
+    brightGreen: '#73d216',
+    gold: '#ffd700'
 }
 
 export const DARKTHEME = {

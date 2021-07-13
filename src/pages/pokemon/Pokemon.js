@@ -11,6 +11,7 @@ import { VALUES } from '../../constants/values'
 import { DARKTHEME } from '../../constants/colors'
 import Spacer from '../../components/Spacer'
 import AltForms from './AltForms'
+import Ratings from './Ratings'
 
 const Container = styled.div`
     display: flex;
@@ -217,13 +218,13 @@ function Pokemon(props) {
                     </BackgroundColor>
                     <HeaderContainer>
                         <Header>
-                            <Link to={"/pokemon/" + (pokemon.id - 1)}>
+                            <Link to={"/pokemon/" + (pokemon.alternateForms[0].id - 1)}>
                                 <PreviousButton />
                             </Link>
                             <Name>
                                 #{pokemon.id}, {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
                             </Name>
-                            <Link to={"/pokemon/" + (pokemon.id + 1)}>
+                            <Link to={"/pokemon/" + (pokemon.alternateForms[0].id + 1)}>
                                 <NextButton />
                             </Link>
                         </Header>
@@ -236,6 +237,7 @@ function Pokemon(props) {
                     {pokemon.alternateForms.length > 1 &&
                         <AltForms selected={pokemon.id} altForms={pokemon.alternateForms}/>
                     }
+                    <Ratings ratings={pokemon.ratings}></Ratings>
                     <Abilities abilities={pokemon.abilities} />
                     <Stats stats={pokemon.stats} />
                     <Defenses defenses={pokemon.defenses} />
