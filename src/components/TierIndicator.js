@@ -49,8 +49,6 @@ function TierIndicator(props) {
         tier = "S"
     }
 
-    console.log(tier)
-
     return (
         <Container tier={tier}>
             <Text>{tier}</Text>

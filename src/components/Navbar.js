@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { VALUES } from '../constants/values'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import { FaSearch, FaStar } from 'react-icons/fa'
+import { FaSearch, FaHeart } from 'react-icons/fa'
 import { DARKTHEME } from '../constants/colors'
 
 const NavbarContainer = styled.div`
@@ -47,7 +47,7 @@ const SearchIcon = styled(FaSearch)`
     margin-top: 5px;
 `
 
-const FaveIcon = styled(FaStar)`
+const FaveIcon = styled(FaHeart)`
     height: calc((${VALUES.navbarHeight} / 2) - 5px);
     width: calc((${VALUES.navbarHeight} / 2) - 5px);
     margin-left: auto;

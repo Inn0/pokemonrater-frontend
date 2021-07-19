@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from "react-router-dom"
+import { useParams, useHistory, Link } from "react-router-dom"
 import styled from 'styled-components'
 import { FaChevronLeft, FaRegHeart, FaChevronRight, FaHeart } from 'react-icons/fa'
 import Stats from './Stats'
@@ -135,6 +135,7 @@ function Pokemon(props) {
     const [loading, setLoading] = useState(true)
     const [bgColor, setBgColor] = useState("lightgrey")
     const [isFavorite, setIsFavorite] = useState(false)
+    const history  = useHistory()
 
     useEffect(() => {
         if (JSON.parse(localStorage.getItem('favorites')) == null) {
@@ -144,13 +145,18 @@ function Pokemon(props) {
         fetch('https://pokemonrater-api.herokuapp.com/pokemon/name/' + pokemonName.toLowerCase())
             .then(res => res.json())
             .then(res => {
-                setPokemon(res);
-                setLoading(false);
-                getType(res);
-                setIsFavorite(JSON.parse(localStorage.getItem('favorites')).includes(pokemon.id));
-                console.log(res);
+                if (res.status === 500) {
+                    alert("No Pokémon with the name or id " + pokemonName.toLowerCase() + " was found!");
+                    history.push("/")
+                    
+                } else {
+                    setPokemon(res);
+                    setLoading(false);
+                    getType(res);
+                    setIsFavorite(JSON.parse(localStorage.getItem('favorites')).includes(pokemon.id));
+                }
             })
-    }, [pokemonName, pokemon.id])
+    }, [pokemonName, pokemon.id, history])
 
     function getType(pokemon) {
         switch (pokemon.types[0].name) {
@@ -183,7 +189,7 @@ function Pokemon(props) {
             favorites = []
         }
 
-        if (favorites.length >= 12) {
+        if (!isFavorite && favorites.length >= 12) {
             alert('You cannot have more than 12 favorite Pokémon!')
         } else {
             if (favorites.includes(id)) {
@@ -235,7 +241,7 @@ function Pokemon(props) {
                         })}
                     </TypeContainer>
                     {pokemon.alternateForms.length > 1 &&
-                        <AltForms selected={pokemon.id} altForms={pokemon.alternateForms}/>
+                        <AltForms selected={pokemon.id} altForms={pokemon.alternateForms} />
                     }
                     <Ratings ratings={pokemon.ratings}></Ratings>
                     <Abilities abilities={pokemon.abilities} />
